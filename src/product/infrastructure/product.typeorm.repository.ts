@@ -4,6 +4,7 @@ import { ProductRepository } from '../domain/product.repository';
 import { Product } from '../domain/product.domain';
 import { InjectRepository } from '@nestjs/typeorm';
 import { MapperService } from '@Common/application/mapper/mapper.service';
+import { SearchProduct } from '../domain/interfaces/search-product.interface';
 
 export class ProductTypeOrmRepository
   extends Repository<ProductEntity>
@@ -26,8 +27,15 @@ export class ProductTypeOrmRepository
     return this.mapperService.entityToClass(productCreated, Product);
   }
 
-  async findAll(): Promise<Product[]> {
-    return this.productRepository.find();
+  async findAll(query: SearchProduct): Promise<Product[]> {
+    const { name, description } = query;
+    const productsFound = await this.productRepository.find({
+      where: [{ name: name ?? '' }, { description: description ?? '' }],
+    });
+
+    return productsFound.map((product) =>
+      this.mapperService.entityToClass(product, Product),
+    );
   }
 
   async findById(id: string): Promise<Product | null> {
