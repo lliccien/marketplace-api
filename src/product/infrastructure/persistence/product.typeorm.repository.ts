@@ -48,7 +48,7 @@ export class ProductTypeOrmRepository
     return this.mapperService.entityToClass(productFound, Product);
   }
 
-  async updateById(id: string, newProduct: Product): Promise<Product> {
+  async updateById(id: string, updateProduct: Product): Promise<Product> {
     const productFound = await this.productRepository.findOne({
       where: { id },
     });
@@ -59,7 +59,7 @@ export class ProductTypeOrmRepository
 
     const productUpdated = await this.productRepository.save({
       id,
-      ...newProduct,
+      ...updateProduct,
     });
     return this.mapperService.entityToClass(productUpdated, Product);
   }

@@ -46,7 +46,7 @@ export class CategoryTypeOrmRepository
     return this.mapperService.entityToClass(categoryFound, Category);
   }
 
-  async updateById(id: string, newCategory: Category): Promise<Category> {
+  async updateById(id: string, updateCategory: Category): Promise<Category> {
     const categoryFound = await this.categoryRepository.findOne({
       where: { id },
     });
@@ -57,7 +57,7 @@ export class CategoryTypeOrmRepository
 
     const categoryUpdated = await this.categoryRepository.save({
       id,
-      ...newCategory,
+      ...updateCategory,
     });
     return this.mapperService.entityToClass(categoryUpdated, Category);
   }

@@ -1,3 +1,4 @@
+import { Product } from '@Product/domain/product.domain';
 import { ProductRepository } from '@Product/domain/product.repository';
 import { Inject, Injectable } from '@nestjs/common';
 
@@ -8,7 +9,7 @@ export class UpdateByIdProductService {
     private readonly productRepository: ProductRepository,
   ) {}
 
-  async execute(id: string, product: any): Promise<any> {
-    return await this.productRepository.updateById(id, product);
+  async execute(id: string, updateProduct: Product): Promise<Product> {
+    return await this.productRepository.updateById(id, updateProduct);
   }
 }

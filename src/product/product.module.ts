@@ -11,6 +11,12 @@ import { ProductEntity } from './infrastructure/persistence/entities/product.ent
 import { MapperService } from '@Common/application/mapper/mapper.service';
 import { CommonModule } from '@Common/common.module';
 import { SearchByNameOrDescriptionService } from './application/product/search-by-name-or-description/search-by-name-or-description.service';
+import { CreateCategoryService } from './application/category/create-category/create-category.service';
+import { FindAllCategoryService } from './application/category/find-all-category/find-all-category.service';
+import { FindByIdCategoryService } from './application/category/find-by-id-category/find-by-id-category.service';
+import { UpdateByIdCategoryService } from './application/category/update-by-id-category/update-by-id-category.service';
+import { DeleteByIdCategoryService } from './application/category/delete-by-id-category/delete-by-id-category.service';
+import { CategoryTypeOrmRepository } from './infrastructure/persistence/category.typeorm.repository';
 
 @Module({
   imports: [TypeOrmModule.forFeature([ProductEntity]), CommonModule],
@@ -27,6 +33,16 @@ import { SearchByNameOrDescriptionService } from './application/product/search-b
     },
     ProductTypeOrmRepository,
     SearchByNameOrDescriptionService,
+    CreateCategoryService,
+    FindAllCategoryService,
+    FindByIdCategoryService,
+    UpdateByIdCategoryService,
+    DeleteByIdCategoryService,
+    {
+      provide: 'ICategoryRepository',
+      useClass: CategoryTypeOrmRepository,
+    },
+    CategoryTypeOrmRepository,
   ],
   controllers: [ProductController],
 })
