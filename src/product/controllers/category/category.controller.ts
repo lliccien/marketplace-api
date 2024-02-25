@@ -35,7 +35,7 @@ export class CategoryController {
         response.status(201).json(result);
       })
       .catch((error) => {
-        response.status(400).json(error.message);
+        response.status(400).json({ message: error.message });
       });
   }
 
@@ -47,7 +47,7 @@ export class CategoryController {
         response.status(200).json(result);
       })
       .catch((error) => {
-        response.status(400).json(error.message);
+        response.status(400).json({ message: error.message });
       });
   }
 
@@ -62,7 +62,7 @@ export class CategoryController {
         response.status(200).json(result);
       })
       .catch((error) => {
-        response.status(400).json(error.message);
+        response.status(400).json({ message: error.message });
       });
   }
 
@@ -78,7 +78,7 @@ export class CategoryController {
         response.status(200).json(result);
       })
       .catch((error) => {
-        response.status(400).json(error.message);
+        response.status(400).json({ message: error.message });
       });
   }
 
@@ -93,7 +93,7 @@ export class CategoryController {
         response.status(204).json();
       })
       .catch((error) => {
-        response.status(400).json(error.message);
+        response.status(400).json({ message: error.message });
       });
   }
 }
