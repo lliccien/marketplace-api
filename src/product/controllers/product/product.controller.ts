@@ -38,7 +38,7 @@ export class ProductController {
         response.status(201).json(result);
       })
       .catch((error) => {
-        response.status(400).json(error);
+        response.status(400).json(error.message);
       });
   }
   @Get()
@@ -49,7 +49,7 @@ export class ProductController {
         response.status(200).json(result);
       })
       .catch((error) => {
-        response.status(400).json(error);
+        response.status(400).json(error.message);
       });
   }
   @Get(':id')
@@ -63,7 +63,7 @@ export class ProductController {
         response.status(200).json(result);
       })
       .catch((error) => {
-        response.status(400).json(error);
+        response.status(400).json(error.message);
       });
   }
   @Put(':id')
@@ -78,7 +78,7 @@ export class ProductController {
         response.status(200).json(result);
       })
       .catch((error) => {
-        response.status(400).json(error);
+        response.status(400).json(error.message);
       });
   }
   @Delete(':id')
@@ -92,7 +92,7 @@ export class ProductController {
         response.status(204).json();
       })
       .catch((error) => {
-        response.status(400).json(error);
+        response.status(400).json(error.message);
       });
   }
 
@@ -107,7 +107,7 @@ export class ProductController {
         response.status(200).json(result);
       })
       .catch((error) => {
-        response.status(400).json(error);
+        response.status(400).json(error.message);
       });
   }
 }

@@ -22,8 +22,6 @@ export class ProductTypeOrmRepository
   }
 
   async createProduct(product: Product): Promise<Product> {
-    console.log('product', product);
-
     const productCreated = await this.productRepository.save(product);
     return this.mapperService.entityToClass(productCreated, Product);
   }

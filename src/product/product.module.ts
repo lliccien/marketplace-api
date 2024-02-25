@@ -17,9 +17,14 @@ import { FindByIdCategoryService } from './application/category/find-by-id-categ
 import { UpdateByIdCategoryService } from './application/category/update-by-id-category/update-by-id-category.service';
 import { DeleteByIdCategoryService } from './application/category/delete-by-id-category/delete-by-id-category.service';
 import { CategoryTypeOrmRepository } from './infrastructure/persistence/category.typeorm.repository';
+import { CategoryEntity } from './infrastructure/persistence/entities/category.entity';
+import { CategoryController } from './controllers/category/category.controller';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([ProductEntity]), CommonModule],
+  imports: [
+    TypeOrmModule.forFeature([ProductEntity, CategoryEntity]),
+    CommonModule,
+  ],
   providers: [
     MapperService,
     CreateProductService,
@@ -44,6 +49,6 @@ import { CategoryTypeOrmRepository } from './infrastructure/persistence/category
     },
     CategoryTypeOrmRepository,
   ],
-  controllers: [ProductController],
+  controllers: [ProductController, CategoryController],
 })
 export class ProductModule {}

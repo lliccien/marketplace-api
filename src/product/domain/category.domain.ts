@@ -1,7 +1,7 @@
 export class Category {
   id?: string;
   denomination: string;
-  createdAt: Date;
+  createdAt?: Date;
   updatedAt?: Date;
 
   static create(data: Category): Category {
