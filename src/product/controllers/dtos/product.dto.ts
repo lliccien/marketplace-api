@@ -1,4 +1,5 @@
-import { IsNumber, IsString } from 'class-validator';
+import { Category } from '@Product/domain/category.domain';
+import { IsNumber, IsString, IsUUID } from 'class-validator';
 
 export class ProductDto {
   @IsString()
@@ -15,4 +16,7 @@ export class ProductDto {
 
   @IsString()
   image: string;
+
+  @IsUUID()
+  category: Category;
 }
