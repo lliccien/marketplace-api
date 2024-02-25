@@ -17,11 +17,14 @@
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
+    "rootDir": ".",
     "paths": {
       "@Config/*": ["src/config/*"],
       "@Database/*": ["src/database/*"],
       "@Common/*": ["src/common/*"],
-      "@Product/*": ["src/Product/*"]
+      "@Product/*": ["src/product/*"]
     }
-  }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }

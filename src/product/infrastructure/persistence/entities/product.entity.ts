@@ -17,7 +17,7 @@ export class ProductEntity {
   @Column()
   description: string;
 
-  @Column()
+  @Column({ type: 'decimal' })
   price: number;
 
   @Column()

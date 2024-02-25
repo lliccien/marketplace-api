@@ -8,7 +8,7 @@ export class UpdateByIdProductService {
     private readonly productRepository: ProductRepository,
   ) {}
 
-  async updateById(id: string, product: any): Promise<any> {
+  async execute(id: string, product: any): Promise<any> {
     return await this.productRepository.updateById(id, product);
   }
 }

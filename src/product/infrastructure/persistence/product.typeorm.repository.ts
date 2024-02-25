@@ -1,10 +1,9 @@
-import { Repository } from 'typeorm';
+import { ILike, Repository } from 'typeorm';
 import { ProductEntity } from './entities/product.entity';
-import { ProductRepository } from '../domain/product.repository';
-import { Product } from '../domain/product.domain';
+import { ProductRepository } from '../../domain/product.repository';
+import { Product } from '../../domain/product.domain';
 import { InjectRepository } from '@nestjs/typeorm';
 import { MapperService } from '@Common/application/mapper/mapper.service';
-import { SearchProduct } from '../domain/interfaces/search-product.interface';
 
 export class ProductTypeOrmRepository
   extends Repository<ProductEntity>
@@ -23,15 +22,14 @@ export class ProductTypeOrmRepository
   }
 
   async createProduct(product: Product): Promise<Product> {
+    console.log('product', product);
+
     const productCreated = await this.productRepository.save(product);
     return this.mapperService.entityToClass(productCreated, Product);
   }
 
-  async findAll(query: SearchProduct): Promise<Product[]> {
-    const { name, description } = query;
-    const productsFound = await this.productRepository.find({
-      where: [{ name: name ?? '' }, { description: description ?? '' }],
-    });
+  async findAll(): Promise<Product[]> {
+    const productsFound = await this.productRepository.find();
 
     return productsFound.map((product) =>
       this.mapperService.entityToClass(product, Product),
@@ -39,7 +37,10 @@ export class ProductTypeOrmRepository
   }
 
   async findById(id: string): Promise<Product | null> {
-    const productFound = this.productRepository.findOne({ where: { id } });
+    const productFound = await this.productRepository.findOne({
+      where: { id },
+    });
+
     if (productFound === null || productFound === undefined) {
       throw new Error('Product not found');
     }
@@ -73,5 +74,18 @@ export class ProductTypeOrmRepository
     }
 
     await this.productRepository.delete({ id });
+  }
+
+  async searchByNameOrDescription(term: string): Promise<Product[]> {
+    const productsFound = await this.productRepository.find({
+      where: [
+        { name: ILike(`%${term}%`) },
+        { description: ILike(`%${term}%`) },
+      ],
+    });
+
+    return productsFound.map((product) =>
+      this.mapperService.entityToClass(product, Product),
+    );
   }
 }

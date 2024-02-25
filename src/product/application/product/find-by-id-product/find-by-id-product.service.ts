@@ -8,7 +8,7 @@ export class FindByIdProductService {
     private readonly productRepository: ProductRepository,
   ) {}
 
-  async findById(id: string): Promise<any> {
+  async execute(id: string): Promise<any> {
     return await this.productRepository.findById(id);
   }
 }

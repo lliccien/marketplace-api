@@ -1,6 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
+
+import { Product } from '@Product/domain/product.domain';
 import { ProductRepository } from '@Product/domain/product.repository';
-import { Product } from 'src/product/domain/product.domain';
 
 @Injectable()
 export class CreateProductService {
@@ -9,7 +10,7 @@ export class CreateProductService {
     private readonly productRepository: ProductRepository,
   ) {}
 
-  async createProduct(product: Product): Promise<Product> {
+  async execute(product: Product): Promise<Product> {
     return await this.productRepository.createProduct(product);
   }
 }
