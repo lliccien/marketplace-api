@@ -4,7 +4,7 @@ import { generalConfig } from '@Config/general.config';
 import { DatabaseModule } from './database/database.module';
 import { ProductModule } from './product/product.module';
 import { CommonModule } from './common/common.module';
-import { ShoppingCardModule } from './shopping-card/shopping-card.module';
+import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
 
 @Module({
   imports: [
@@ -16,7 +16,7 @@ import { ShoppingCardModule } from './shopping-card/shopping-card.module';
     DatabaseModule,
     ProductModule,
     CommonModule,
-    ShoppingCardModule,
+    ShoppingCartModule,
   ],
   controllers: [],
   providers: [],

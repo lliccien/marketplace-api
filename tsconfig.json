@@ -23,7 +23,7 @@
       "@Database/*": ["src/database/*"],
       "@Common/*": ["src/common/*"],
       "@Product/*": ["src/product/*"],
-      "@ShoppingCard/*": ["src/shopping-card/*"]
+      "@ShoppingCart/*": ["src/shopping-cart/*"]
     }
   },
   "include": ["src/**/*"],
