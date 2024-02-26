@@ -2,9 +2,11 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { ShoppingCardDetailEntity } from './shoppingCardDetail.entity';
 
 @Entity({ name: 'shopping_card' })
 export class ShoppingCardEntity {
@@ -17,7 +19,7 @@ export class ShoppingCardEntity {
   @Column()
   status: string;
 
-  @Column({ type: 'decimal' })
+  @Column({ type: 'decimal', nullable: true })
   total: number;
 
   @CreateDateColumn()
@@ -25,4 +27,10 @@ export class ShoppingCardEntity {
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  @OneToMany(
+    () => ShoppingCardDetailEntity,
+    (shoppingCardDetails) => shoppingCardDetails.shoppingCard,
+  )
+  shoppingCardDetails: ShoppingCardDetailEntity[];
 }

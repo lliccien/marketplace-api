@@ -9,21 +9,8 @@ export class DeleteByIdShoppingCardDetailService {
   constructor(
     @Inject('IShoppingCardDetailRepository')
     private readonly shoppingCardDetailRepository: ShoppingCardDetailRepository,
-    private readonly findByIdShoppingCardDetailService: FindByIdShoppingCardDetailService,
-    private readonly findByIdShoppingCardService: FindByIdShoppingCardService,
-    private readonly deleteByIdShoppingCardService: DeleteByIdShoppingCardService,
   ) {}
   async execute(id: string): Promise<void> {
-    const shoppingCardDetailFound =
-      await this.findByIdShoppingCardDetailService.execute(id);
-
-    const shoppingCardFound = await this.findByIdShoppingCardService.execute(
-      shoppingCardDetailFound.shoppingCard.id,
-    );
-
-    if (shoppingCardFound.shoppingCardDetails.length === 1) {
-      await this.deleteByIdShoppingCardService.execute(shoppingCardFound.id);
-    }
     return await this.shoppingCardDetailRepository.deleteById(id);
   }
 }

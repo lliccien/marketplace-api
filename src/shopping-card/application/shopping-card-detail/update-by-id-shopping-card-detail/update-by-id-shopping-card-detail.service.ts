@@ -10,11 +10,11 @@ export class UpdateByIdShoppingCardDetailService {
   ) {}
   async execute(
     id: string,
-    shoppingCardDetailUpdate: ShoppingCardDetail,
+    updateShoppingCardDetail: ShoppingCardDetail,
   ): Promise<ShoppingCardDetail> {
     return await this.shoppingCardDetailRepository.updateById(
       id,
-      shoppingCardDetailUpdate,
+      updateShoppingCardDetail,
     );
   }
 }

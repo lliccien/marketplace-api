@@ -24,24 +24,28 @@ export class ShoppingCardTypeormRepository
   async createShoppingCard(shoppingCard: ShoppingCard): Promise<ShoppingCard> {
     const shoppingCardCreated =
       await this.shoppingCardRepository.save(shoppingCard);
-    return await this.mapperService.entityToClass(
-      shoppingCardCreated,
-      ShoppingCard,
+    return this.mapperService.entityToClass(shoppingCardCreated, ShoppingCard);
+  }
+
+  async findAll(): Promise<ShoppingCard[]> {
+    const shoppingCardsFound = await this.shoppingCardRepository.find({
+      relations: ['shoppingCardDetails'],
+    });
+    return shoppingCardsFound.map((shoppingCardFound) =>
+      this.mapperService.entityToClass(shoppingCardFound, ShoppingCard),
     );
   }
 
   async findById(id: string): Promise<ShoppingCard> {
     const shoppingCardFound = await this.shoppingCardRepository.findOne({
       where: { id },
+      relations: ['shoppingCardDetails'],
     });
 
     if (shoppingCardFound === null || shoppingCardFound === undefined) {
       throw new Error('Shopping card not found');
     }
-    return await this.mapperService.entityToClass(
-      shoppingCardFound,
-      ShoppingCard,
-    );
+    return this.mapperService.entityToClass(shoppingCardFound, ShoppingCard);
   }
 
   async updateById(
@@ -56,15 +60,12 @@ export class ShoppingCardTypeormRepository
       throw new Error('Shopping card not found');
     }
 
-    const shoppingCardUpdated = this.shoppingCardRepository.save({
+    const shoppingCardUpdated = await this.shoppingCardRepository.save({
       id,
       ...shoppingCardUpdate,
     });
 
-    return await this.mapperService.entityToClass(
-      shoppingCardUpdated,
-      ShoppingCard,
-    );
+    return this.mapperService.entityToClass(shoppingCardUpdated, ShoppingCard);
   }
 
   async deleteById(id: string): Promise<void> {

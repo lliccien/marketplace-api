@@ -4,10 +4,11 @@ export interface ShoppingCardDetailRepository {
   createShoppingCardDetail(
     shoppingCardDetail: ShoppingCardDetail,
   ): Promise<ShoppingCardDetail>;
+  findAll(): Promise<ShoppingCardDetail[]>;
   findById(id: string): Promise<ShoppingCardDetail>;
   updateById(
     id: string,
-    shoppingCardDetailUpdate: ShoppingCardDetail,
+    updateShoppingCardDetail: ShoppingCardDetail,
   ): Promise<ShoppingCardDetail>;
   deleteById(id: string): Promise<void>;
 }

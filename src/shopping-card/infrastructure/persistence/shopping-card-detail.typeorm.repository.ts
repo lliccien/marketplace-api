@@ -26,9 +26,20 @@ export class ShoppingCardDetailTypeOrmRepository
   ): Promise<ShoppingCardDetail> {
     const shoppingCardDetailCreated =
       await this.shoppingCardDetailRepository.save(shoppingCardDetail);
-    return await this.mapperService.entityToClass(
+    return this.mapperService.entityToClass(
       shoppingCardDetailCreated,
       ShoppingCardDetail,
+    );
+  }
+
+  async findAll(): Promise<ShoppingCardDetail[]> {
+    const shoppingCardDetailsFound =
+      await this.shoppingCardDetailRepository.find();
+    return shoppingCardDetailsFound.map((shoppingCardDetailFound) =>
+      this.mapperService.entityToClass(
+        shoppingCardDetailFound,
+        ShoppingCardDetail,
+      ),
     );
   }
 
@@ -44,7 +55,7 @@ export class ShoppingCardDetailTypeOrmRepository
     ) {
       throw new Error('Shopping card detail not found');
     }
-    return await this.mapperService.entityToClass(
+    return this.mapperService.entityToClass(
       shoppingCardDetailFound,
       ShoppingCardDetail,
     );
@@ -52,7 +63,7 @@ export class ShoppingCardDetailTypeOrmRepository
 
   async updateById(
     id: string,
-    shoppingCardDetailUpdate: ShoppingCardDetail,
+    updateShoppingCardDetail: ShoppingCardDetail,
   ): Promise<ShoppingCardDetail> {
     const shoppingCardDetailFound =
       await this.shoppingCardDetailRepository.findOne({
@@ -66,12 +77,13 @@ export class ShoppingCardDetailTypeOrmRepository
       throw new Error('Shopping card detail not found');
     }
 
-    const shoppingCardDetailUpdated = this.shoppingCardDetailRepository.save({
-      id,
-      ...shoppingCardDetailUpdate,
-    });
+    const shoppingCardDetailUpdated =
+      await this.shoppingCardDetailRepository.save({
+        id,
+        ...updateShoppingCardDetail,
+      });
 
-    return await this.mapperService.entityToClass(
+    return this.mapperService.entityToClass(
       shoppingCardDetailUpdated,
       ShoppingCardDetail,
     );

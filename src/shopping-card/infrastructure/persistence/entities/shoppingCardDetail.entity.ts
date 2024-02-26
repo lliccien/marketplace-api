@@ -2,17 +2,16 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { ShoppingCardEntity } from './shoppingCard.entity';
 
 @Entity({ name: 'shopping_card_detail' })
 export class ShoppingCardDetailEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
-
-  @Column()
-  shoppingCardId: string;
 
   @Column()
   productId: string;
@@ -28,4 +27,10 @@ export class ShoppingCardDetailEntity {
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  @ManyToOne(
+    () => ShoppingCardEntity,
+    (shoppingCard) => shoppingCard.shoppingCardDetails,
+  )
+  shoppingCard: ShoppingCardEntity;
 }
