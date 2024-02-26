@@ -1,0 +1,200 @@
+{
+	"info": {
+		"_postman_id": "8f20bd62-d922-429b-95f9-b08d94a8a751",
+		"name": "Products",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "871078",
+		"_collection_link": "https://gold-crater-8948.postman.co/workspace/Marketplace-API~d6f786d9-e09a-4508-b39f-9445a6d5d493/collection/871078-8f20bd62-d922-429b-95f9-b08d94a8a751?action=share&source=collection_link&creator=871078"
+	},
+	"item": [
+		{
+			"name": "Create Product",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.sendRequest(`${pm.variables.get(\"host\")}/api/categories`, function (err, response) {",
+							"    if (err) {",
+							"        console.log(err);",
+							"    } else {",
+							"        ",
+							"        const categories = response.json();",
+							"        ",
+							"        if (categories.length > 0) {",
+							"        ",
+							"            const randomIndex = Math.floor(Math.random() * categories.length);",
+							"            ",
+							"            const randomCategory = categories[randomIndex];",
+							"",
+							"            pm.environment.set(\"randomCategory\", randomCategory.id);",
+							"        } else {",
+							"            console.log(\"No categories found\");",
+							"        }",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"{{$randomProductName}}\",\n    \"description\": \"{{$randomLoremWords}}\",\n    \"price\": {{$randomPrice}},\n    \"stock\": {{$randomInt}} ,\n    \"image\": \"{{$randomImageUrl}}\",\n    \"category\": \"{{randomCategory}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/products",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search by term",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/products/search/est",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"products",
+						"search",
+						"est"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/products/d273052a-c69c-4c90-b4e8-c921c43fcc62",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"products",
+						"d273052a-c69c-4c90-b4e8-c921c43fcc62"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find All",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/products",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update By Id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"{{$randomProductName}}\",\n    \"description\": \"{{$randomLoremWords}}\",\n    \"price\": {{$randomPrice}},\n    \"stock\": {{$randomInt}} ,\n    \"image\": \"{{$randomImageUrl}}\",\n    \"category\": \"e99cba1b-ca56-4b2a-9afc-ed239ae6cb85\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/products/d273052a-c69c-4c90-b4e8-c921c43fcc62",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"products",
+						"d273052a-c69c-4c90-b4e8-c921c43fcc62"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete By Id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"{{$randomProductName}}\",\n    \"description\": \"{{$randomLoremWords}}\",\n    \"price\": {{$randomPrice}},\n    \"stock\": {{$randomInt}} ,\n    \"image\": \"{{$randomImageUrl}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/products/206dc4a5-4065-4c94-beb5-beb67329dc58",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"products",
+						"206dc4a5-4065-4c94-beb5-beb67329dc58"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find By Category Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/products/category/3df607a4-f422-454c-aa08-fd1f8dfc6a84",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"products",
+						"category",
+						"3df607a4-f422-454c-aa08-fd1f8dfc6a84"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,131 @@
+{
+	"info": {
+		"_postman_id": "33a87c02-06c2-4deb-b7ad-836a8041799c",
+		"name": "Shopping Card",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "871078",
+		"_collection_link": "https://gold-crater-8948.postman.co/workspace/Marketplace-API~d6f786d9-e09a-4508-b39f-9445a6d5d493/collection/871078-33a87c02-06c2-4deb-b7ad-836a8041799c?action=share&source=collection_link&creator=871078"
+	},
+	"item": [
+		{
+			"name": "Create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"status\": \"PENDING\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/shopping-carts",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"shopping-carts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/shopping-carts/72f46992-dcc1-4509-8fcc-c64f9dedeb1e",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"shopping-carts",
+						"72f46992-dcc1-4509-8fcc-c64f9dedeb1e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find All",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/shopping-carts",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"shopping-carts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update By Id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"status\": \"COMPLETED\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/shopping-carts/133c8b89-4ffe-4afd-983e-15fdca112b8c",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"shopping-carts",
+						"133c8b89-4ffe-4afd-983e-15fdca112b8c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete By Id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"status\": \"COMPLETED\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/shopping-carts/133c8b89-4ffe-4afd-983e-15fdca112b8c",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"shopping-carts",
+						"133c8b89-4ffe-4afd-983e-15fdca112b8c"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

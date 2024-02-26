@@ -1,0 +1,134 @@
+{
+	"info": {
+		"_postman_id": "dcd501e2-1730-4e64-b04b-02de19109b30",
+		"name": "Category",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "871078",
+		"_collection_link": "https://gold-crater-8948.postman.co/workspace/Marketplace-API~d6f786d9-e09a-4508-b39f-9445a6d5d493/collection/871078-dcd501e2-1730-4e64-b04b-02de19109b30?action=share&source=collection_link&creator=871078"
+	},
+	"item": [
+		{
+			"name": "Create Category",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"denomination\": \"{{$randomWord}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/categories",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find All",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/categories",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/categories/cc3148b9-c99e-40ea-be44-04910e46e00c",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"categories",
+						"cc3148b9-c99e-40ea-be44-04910e46e00c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update By Id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"denomination\": \"books\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/categories/9a59f121-d6ec-4722-b1e8-48850225add7",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"categories",
+						"9a59f121-d6ec-4722-b1e8-48850225add7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete By Id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/categories/38ebd5ba-d89c-4d3e-8fe5-a2e84116126c",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"categories",
+						"38ebd5ba-d89c-4d3e-8fe5-a2e84116126c"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,134 @@
+{
+	"info": {
+		"_postman_id": "0277e730-9d4c-4be2-a202-9f25d7d67c4c",
+		"name": "Shopping Cart Detail",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "871078",
+		"_collection_link": "https://gold-crater-8948.postman.co/workspace/Marketplace-API~d6f786d9-e09a-4508-b39f-9445a6d5d493/collection/871078-0277e730-9d4c-4be2-a202-9f25d7d67c4c?action=share&source=collection_link&creator=871078"
+	},
+	"item": [
+		{
+			"name": "Create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"shoppingCart\" : \"72f46992-dcc1-4509-8fcc-c64f9dedeb1e\",\n    \"productId\": \"bac72dc9-ee35-468b-92b6-d91e1df0560a\",\n    \"quantity\": 10,\n    \"price\": 881.17\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/shopping-cart-details",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"shopping-cart-details"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find All",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"productId\": \"d273052a-c69c-4c90-b4e8-c921c43fcc62\",\n    \"quantity\": 1,\n    \"price\": 815.53\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/shopping-cart-details",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"shopping-cart-details"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/shopping-cart-details/07592ea8-e076-4891-b219-9e433e3a3093",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"shopping-cart-details",
+						"07592ea8-e076-4891-b219-9e433e3a3093"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update By Id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"shoppingCart\" : \"72f46992-dcc1-4509-8fcc-c64f9dedeb1e\",\n    \"productId\": \"d273052a-c69c-4c90-b4e8-c921c43fcc62\",\n    \"quantity\": 20,\n    \"price\": 29.44\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/shopping-cart-details/07592ea8-e076-4891-b219-9e433e3a3093",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"shopping-cart-details",
+						"07592ea8-e076-4891-b219-9e433e3a3093"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete By Id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/shopping-cart-details/07592ea8-e076-4891-b219-9e433e3a3093",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"shopping-cart-details",
+						"07592ea8-e076-4891-b219-9e433e3a3093"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
