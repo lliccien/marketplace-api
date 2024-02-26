@@ -19,6 +19,7 @@ import { UpdateByIdProductService } from '@Product/application/product/update-by
 import { DeleteByIdProductService } from '@Product/application/product/delete-by-id-product/delete-by-id-product.service';
 import { SearchByNameOrDescriptionService } from '@Product/application/product/search-by-name-or-description/search-by-name-or-description.service';
 import { ValidateParamTermPipe } from '@Product/infrastructure/pipe/validate-param-term/validate-param-term.pipe';
+import { FindProductsByCategoryIdService } from '@Product/application/product/find-products-by-category-id/find-products-by-category-id.service';
 
 @Controller('products')
 export class ProductController {
@@ -29,6 +30,7 @@ export class ProductController {
     private readonly updateByIdProductService: UpdateByIdProductService,
     private readonly deleteByIdProductService: DeleteByIdProductService,
     private readonly searchByNameOrDescriptionService: SearchByNameOrDescriptionService,
+    private readonly findProductsByCategoryIdService: FindProductsByCategoryIdService,
   ) {}
   @Post()
   createProduct(@Body() product: ProductDto, @Res() response: Response) {
@@ -103,6 +105,21 @@ export class ProductController {
   ) {
     this.searchByNameOrDescriptionService
       .execute(term)
+      .then((result) => {
+        response.status(200).json(result);
+      })
+      .catch((error) => {
+        response.status(400).json({ message: error.message });
+      });
+  }
+
+  @Get('category/:id')
+  findByCategoryId(
+    @Param('id', ParseUUIDPipe) id: string,
+    @Res() response: Response,
+  ) {
+    this.findProductsByCategoryIdService
+      .execute(id)
       .then((result) => {
         response.status(200).json(result);
       })

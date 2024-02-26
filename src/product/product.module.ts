@@ -19,6 +19,7 @@ import { DeleteByIdCategoryService } from './application/category/delete-by-id-c
 import { CategoryTypeOrmRepository } from './infrastructure/persistence/category.typeorm.repository';
 import { CategoryEntity } from './infrastructure/persistence/entities/category.entity';
 import { CategoryController } from './controllers/category/category.controller';
+import { FindProductsByCategoryIdService } from './application/product/find-products-by-category-id/find-products-by-category-id.service';
 
 @Module({
   imports: [
@@ -48,6 +49,7 @@ import { CategoryController } from './controllers/category/category.controller';
       useClass: CategoryTypeOrmRepository,
     },
     CategoryTypeOrmRepository,
+    FindProductsByCategoryIdService,
   ],
   controllers: [ProductController, CategoryController],
 })

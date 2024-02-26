@@ -7,4 +7,5 @@ export interface ProductRepository {
   updateById(id: string, newProduct: Product): Promise<Product>;
   deleteById(id: string): Promise<void>;
   searchByNameOrDescription(term: string): Promise<Product[]>;
+  findByCategoryId(categoryId: string): Promise<Product[]>;
 }

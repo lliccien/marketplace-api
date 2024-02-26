@@ -27,7 +27,9 @@ export class ProductTypeOrmRepository
   }
 
   async findAll(): Promise<Product[]> {
-    const productsFound = await this.productRepository.find();
+    const productsFound = await this.productRepository.find({
+      relations: ['category'],
+    });
 
     return productsFound.map((product) =>
       this.mapperService.entityToClass(product, Product),
@@ -80,6 +82,16 @@ export class ProductTypeOrmRepository
         { name: ILike(`%${term}%`) },
         { description: ILike(`%${term}%`) },
       ],
+    });
+
+    return productsFound.map((product) =>
+      this.mapperService.entityToClass(product, Product),
+    );
+  }
+
+  async findByCategoryId(categoryId: string): Promise<Product[]> {
+    const productsFound = await this.productRepository.find({
+      where: { category: { id: categoryId } },
     });
 
     return productsFound.map((product) =>
