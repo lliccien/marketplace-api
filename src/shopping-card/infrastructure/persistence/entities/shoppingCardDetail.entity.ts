@@ -7,7 +7,7 @@ import {
 } from 'typeorm';
 
 @Entity({ name: 'shopping_card_detail' })
-export class ShoppingCardDetail {
+export class ShoppingCardDetailEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 

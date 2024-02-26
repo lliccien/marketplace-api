@@ -22,7 +22,8 @@
       "@Config/*": ["src/config/*"],
       "@Database/*": ["src/database/*"],
       "@Common/*": ["src/common/*"],
-      "@Product/*": ["src/product/*"]
+      "@Product/*": ["src/product/*"],
+      "@ShoppingCard/*": ["src/shopping-card/*"]
     }
   },
   "include": ["src/**/*"],
