@@ -3,7 +3,7 @@ import { ShoppingCardDetailEntity } from './entities/shoppingCardDetail.entity';
 import { ShoppingCardDetailRepository } from '@ShoppingCard/domain/shopping-card-detail.repository';
 import { InjectRepository } from '@nestjs/typeorm';
 import { MapperService } from '@Common/application/mapper/mapper.service';
-import { ShoppingCardDetail } from '@ShoppingCard/domain/shoppinfg-card-detail';
+import { ShoppingCardDetail } from '@ShoppingCard/domain/shopping-card-detail.domain';
 
 export class ShoppingCardDetailTypeOrmRepository
   extends Repository<ShoppingCardDetailEntity>

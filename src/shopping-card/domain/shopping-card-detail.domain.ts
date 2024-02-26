@@ -2,7 +2,6 @@ import { ShoppingCard } from './shopping-card.domain';
 
 export class ShoppingCardDetail {
   id?: string;
-  shoppingCardId: string;
   productId: string;
   quantity: number;
   price: number;

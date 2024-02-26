@@ -1,4 +1,4 @@
-import { ShoppingCardDetail } from './shoppinfg-card-detail';
+import { ShoppingCardDetail } from './shopping-card-detail.domain';
 
 export interface ShoppingCardDetailRepository {
   createShoppingCardDetail(

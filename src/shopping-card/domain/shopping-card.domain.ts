@@ -1,4 +1,4 @@
-import { ShoppingCardDetail } from './shoppinfg-card-detail';
+import { ShoppingCardDetail } from './shopping-card-detail.domain';
 import { Status } from './status.enum';
 
 export class ShoppingCard {
@@ -8,7 +8,7 @@ export class ShoppingCard {
   total?: number;
   createdAt?: Date;
   updatedAt?: Date;
-  shoppingCardDetails: ShoppingCardDetail[];
+  shoppingCardDetails?: ShoppingCardDetail[];
 
   static create(data: ShoppingCard): ShoppingCard {
     return Object.assign(new ShoppingCard(), data);
